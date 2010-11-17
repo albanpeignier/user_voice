@@ -14,6 +14,14 @@ class UserVoice
     self
   end
 
+  def lang
+    @lang or I18n.locale
+  end
+
+  def as_json(options = nil)
+    super.merge("lang" => lang)
+  end
+
   @default = nil
   cattr_accessor :default
 
